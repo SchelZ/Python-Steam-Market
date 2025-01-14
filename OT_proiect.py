@@ -74,7 +74,7 @@ class StartPage(Tk):
         Button(self, text="Display the matrix", command= lambda: self.__display_matrix()).place(relx=0.5, rely=0.5, anchor=CENTER)      ## Display the matrix
         Button(self, text="Save to Excel file", command= lambda: self.__save_file()).place(relx=0.5, rely=0.6, anchor=CENTER)           ## Save to Excel file
 
-    def __retrieve_data(self):
+    def __retrieve_data(self) -> None:
         global OA_database, OA_database_aux
         OA_website: Final[str] = "https://store.steampowered.com/search/?sort_by=Released_DESC&os=win"
         OA_headers: Final[dict] = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1941.0 Safari/537.36'}
@@ -90,11 +90,11 @@ class StartPage(Tk):
         OA_database_aux = list(zip(self.OA_product_name, OA_product_price))
         OA_database = [item for item in OA_database_aux if len(item[0]) < 10]
 
-    def __create_graph(self):
+    def __create_graph(self) -> None:
         if OA_database is not None:
             OA_graph_window = GraphWindow()
 
-    def __display_matrix(self):
+    def __display_matrix(self) -> None:
         if OA_database is not None:
             OA_graph_window = DisplayMatrix()
 
